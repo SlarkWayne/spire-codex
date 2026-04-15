@@ -33,3 +33,6 @@ history-of-runs/
 
 #Analysis Docs
 Spire_Codex_Growth_Strategy*
+
+# Local agent skills configuration
+.agents/
