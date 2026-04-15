@@ -40,6 +40,22 @@ This repository contains:
 - **frontend/**: Next.js frontend for the spire-codex.com website
 - **data/**: Parsed JSON data files (14 languages)
 
+## Commit Hygiene
+
+- Do not include temporary process artifacts such as `docs/superpowers/specs/` or `docs/superpowers/plans/` in final commits or merges unless the user explicitly asks to keep them.
+- Before merging to `main`, squash or rewrite local work so final commits contain only repository behavior, tooling, source, and intentional documentation changes.
+
+## Chinese Localization
+
+When answering in Chinese, use Simplified Chinese localization from `data/zhs/*.json` for game entities and fixed game terms.
+
+- Use `中文名（English/ClassName / ID）` on first mention when English/source identity helps trace code; after that, use the Chinese name.
+- Prefer localized names from `data/zhs` over ad hoc translation. For example, `Overgrowth` is `密林`, and `Underdocks` is `暗港`.
+- Use `进阶` for the game concept `Ascension`; use localized ascension names from `data/zhs/ascensions.json`, such as `阴郁` and `双重Boss`.
+- Resolve fixed terms from `data/zhs/translations.json` and `data/zhs/glossary.json` before finalizing Chinese wording.
+- Preserve code symbols in English/code form, such as `AscensionLevel.DoubleBoss`, `RoomType.Monster`, and `GenerateAllEncounters()`.
+- If `data/zhs` has no entry, fall back to English data and the id, and explicitly mark the localized name as missing.
+
 ## Key Namespaces for Analysis
 
 When using analyze-sts2 skill, focus on these namespaces:

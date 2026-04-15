@@ -104,6 +104,21 @@ Analysis points:
 - Conditional logic based on `AscensionLevel` enum
 - Monster move pattern changes in `GenerateMoveStateMachine()`
 
+### Localized Output Requirements
+
+When the user asks in Chinese or requests Chinese output:
+
+- Keep mechanics analysis code-first: gameplay claims must still come from `extraction/decompiled/`.
+- Look up displayed names in `data/zhs` before writing the final answer.
+- For act, encounter, monster, ascension, card, relic, power, keyword, and event names, consult the corresponding localized JSON file.
+- For fixed terms that are not entities, consult `data/zhs/translations.json` and `data/zhs/glossary.json`.
+- Use `进阶 N（Ascension N）` on first mention of ascension levels.
+- In Chinese analysis tables, include traceability columns when useful: `中文名`, `英文/源码类`, `ID`, and `代码来源`.
+- Treat localized data as display metadata, not as mechanics evidence.
+- All mechanics claims still require `file_path:line_number` references to C# source under `extraction/decompiled/`.
+- Preserve C# symbols, file paths, enum names, method names, and model ids in code form.
+- If a Chinese localization is missing, state that it is missing and fall back to English/id.
+
 ## Implementation
 
 ### Mandatory Analysis Steps
@@ -163,6 +178,9 @@ grep -r "AscensionHelper.GetValueIfAscension" extraction/decompiled/
 
 # Find enum definitions
 grep -r "enum.*AscensionLevel" extraction/decompiled/
+
+# Resolve Simplified Chinese localized names for Chinese answers
+python3 tools/localize.py --lang zhs --auto Overgrowth RubyRaidersNormal AscensionLevel.DoubleBoss
 ```
 
 ### Value Extraction Patterns
