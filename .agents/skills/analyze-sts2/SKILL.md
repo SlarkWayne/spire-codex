@@ -119,6 +119,18 @@ When the user asks in Chinese or requests Chinese output:
 - Preserve C# symbols, file paths, enum names, method names, and model ids in code form.
 - If a Chinese localization is missing, state that it is missing and fall back to English/id.
 
+#### Character Names (角色名称)
+
+**Source**: `data/zhs/translations.json:68-72`
+
+| English ID | 中文名 | Notes |
+|---|---|---|
+| `ironclad` | 铁甲战士 | — |
+| `silent` | 静默猎手 | Not "潜行者" |
+| `defect` | 故障机器人 | Not "机器人" |
+| `necrobinder` | 亡灵契约师 | Not "死灵绑缚者" |
+| `regent` | 储君 | Not "摄政王" |
+
 ## Implementation
 
 ### Mandatory Analysis Steps
